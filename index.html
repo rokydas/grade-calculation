@@ -28,71 +28,95 @@
     <section id="psc-input" class="container psc-input">
         <div class="form-box">
             <h3>PSC Grade Calculation</h3>
+            <h5 id="psc-alert"></h5>
             <table class="table table-hover">
                 <tr scope="row">
                     <td><h5>Bengali</h5></td>
-                    <td><input type="number" placeholder="Bengali Number"></td>
+                    <td><input id="psc-bengali" type="number" placeholder="Bengali Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>English</h5></td>
-                    <td><input type="number" placeholder="English Number"></td>
+                    <td><input id="psc-english" type="number" placeholder="English Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Math</h5></td>
-                    <td><input type="number" placeholder="Math Number"></td>
+                    <td><input id="psc-math" type="number" placeholder="Math Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>B.G.S</h5></td>
-                    <td><input type="number" placeholder="B.G.S Number"></td>
+                    <td><input id="psc-bgs" type="number" placeholder="B.G.S Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Science</h5></td>
-                    <td><input type="number" placeholder="Science Number"></td>
+                    <td><input id="psc-science" type="number" placeholder="Science Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Religion</h5></td>
-                    <td><input type="number" placeholder="Religion Number"></td>
+                    <td><input id="psc-religion" type="number" placeholder="Religion Number"></td>
                 </tr>
             </table>
-            <button class="custom-button">Calculate Your Grade</button>
+            <button id="psc-calculate" class="custom-button">Calculate Your Grade</button>
         </div>
-        <div class="result-sheet">
-            <h1>Your GPA: 5.00</h1>
+        <div id="psc-result" class="result-sheet">
+            <h1>Your GPA: <span id="psc-point"></span></h1>
+            <h1>Your Grade: <span id="psc-grade"></span></h1>
         </div>
     </section>
     <section id="jsc-input" class="container jsc-input">
         <div class="form-box">
             <h3>JSC Grade Calculation</h3>
+            <h5 id="jsc-alert"></h5>
             <table class="table table-hover">
                 <tr scope="row">
                     <td><h5>Bengali</h5></td>
-                    <td><input type="number" placeholder="Bengali Number"></td>
+                    <td><input id="jsc-bengali" type="number" placeholder="Bengali Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>English</h5></td>
-                    <td><input type="number" placeholder="English Number"></td>
+                    <td><input id="jsc-english" type="number" placeholder="English Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Math</h5></td>
-                    <td><input type="number" placeholder="Math Number"></td>
+                    <td><input id="jsc-math" type="number" placeholder="Math Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>B.G.S</h5></td>
-                    <td><input type="number" placeholder="B.G.S Number"></td>
+                    <td><input id="jsc-bgs" type="number" placeholder="B.G.S Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Science</h5></td>
-                    <td><input type="number" placeholder="Science Number"></td>
+                    <td><input id="jsc-science" type="number" placeholder="Science Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Religion</h5></td>
-                    <td><input type="number" placeholder="Religion Number"></td>
+                    <td><input id="jsc-religion" type="number" placeholder="Religion Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>ICT</h5></td>
+                    <td><input id="jsc-ict" type="number" placeholder="ICT Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Physical Education</h5></td>
+                    <td><input id="jsc-physical" type="number" placeholder="Physical Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Arts and Craft</h5></td>
+                    <td><input id="jsc-arts-craft" type="number" placeholder="Arts and Craft Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Work and life Education</h5></td>
+                    <td><input id="jsc-work-life" type="number" placeholder="Work and life Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Agricultural Studies / Home Science</h5></td>
+                    <td><input id="jsc-agricultural-home" type="number" placeholder="Agricultural Studies / Home Science Number"></td>
                 </tr>
             </table>
-            <button class="custom-button">Calculate Your Grade</button>
+            <button id="jsc-calculate" class="custom-button">Calculate Your Grade</button>
         </div>
-        <div class="result-sheet">
-            <h1>Your GPA: 5.00</h1>
+        <div id="jsc-result" class="result-sheet">
+            <h1>Your GPA: <span id="jsc-point"></span></h1>
+            <h1>Your Grade: <span id="jsc-grade"></span></h1>
         </div>
     </section>
     <section id="ssc-input" class="container ssc-input">
@@ -126,8 +150,9 @@
             </table>
             <button class="custom-button">Calculate Your Grade</button>
         </div>
-        <div class="result-sheet">
-            <h1>Your GPA: 5.00</h1>
+        <div id="psc-result" class="result-sheet">
+            <h1>Your GPA: <span id="psc-point"></span></h1>
+            <h1>Your Grade: <span id="psc-grade"></span></h1>
         </div>
     </section>
     <section id="hsc-input" class="container hsc-input">
@@ -161,8 +186,9 @@
             </table>
             <button class="custom-button">Calculate Your Grade</button>
         </div>
-        <div class="result-sheet">
-            <h1>Your GPA: 5.00</h1>
+        <div id="psc-result" class="result-sheet">
+            <h1>Your GPA: <span id="psc-point"></span></h1>
+            <h1>Your Grade: <span id="psc-grade"></span></h1>
         </div>
     </section>
 
