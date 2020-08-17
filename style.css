@@ -1,0 +1,57 @@
+.exam-name{
+    color: white;
+    background-color: teal;
+    padding: 10px 20px;
+}
+
+.exam-header{
+    border-radius: 10px;
+    border: 5px solid teal;
+    text-align: center;
+}
+
+.psc-input, .jsc-input, .ssc-input, .hsc-input{
+    text-align: center;
+    margin-top: 30px;
+}
+
+input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 5px solid gray;
+}
+
+input:focus{
+    border: 5px solid lightskyblue;
+}
+
+.custom-button{
+    color: white;
+    background-color: teal;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.custom-button:hover{
+    background-color: rgb(10, 87, 87);
+}
+
+.form-box h3{
+    margin-bottom: 30px;
+}
+
+.result-sheet{
+    background-color: burlywood;
+    padding: 10px;
+    margin: 30px 20%;
+    border-radius: 10px;
+}
+
+.jsc-input, .ssc-input, .hsc-input{
+    display: none;
+}
+
+#psc{
+    background-color: #0a5757;
+}
