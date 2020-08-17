@@ -41,6 +41,11 @@ input:focus{
     margin-bottom: 30px;
 }
 
+#psc-alert, #jsc-alert, #ssc-alert, #hsc-alert{
+    color: red;
+    display: none;
+}
+
 .result-sheet{
     background-color: burlywood;
     padding: 10px;
@@ -54,4 +59,8 @@ input:focus{
 
 #psc{
     background-color: #0a5757;
+}
+
+#psc-result{
+    display: none;
 }
