@@ -11,17 +11,20 @@
     <section class="container exam-header">
         <h1 class="text-center">Grade Calculation</h1>
         <div class="row">
-            <div class="col-md-3 col-3 exam-name">
+            <div class="col exam-name">
                 <h3 id="psc">PSC</h3>
             </div>
-            <div class="col-md-3 col-3 exam-name">
+            <div class="col exam-name">
                 <h3 id="jsc">JSC</h3>
             </div>
-            <div class="col-md-3 col-3 exam-name">
+            <div class="col exam-name">
                 <h3 id="ssc">SSC</h3>
             </div>
-            <div class="col-md-3 col-3 exam-name">
+            <div class="col exam-name">
                 <h3 id="hsc">HSC</h3>
+            </div>
+            <div class="col exam-name">
+                <h3 id="varsity">Varsity</h3>
             </div>
         </div>
     </section>
@@ -68,12 +71,20 @@
             <h5 id="jsc-alert"></h5>
             <table class="table table-hover">
                 <tr scope="row">
-                    <td><h5>Bengali</h5></td>
-                    <td><input id="jsc-bengali" type="number" placeholder="Bengali Number"></td>
+                    <td><h5>Bengali 1<sup>st</sup> paper</h5></td>
+                    <td><input id="jsc-bengali1" type="number" placeholder="Bengali 1st paper Number"></td>
                 </tr>
                 <tr scope="row">
-                    <td><h5>English</h5></td>
-                    <td><input id="jsc-english" type="number" placeholder="English Number"></td>
+                    <td><h5>Bengali 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="jsc-bengali2" type="number" placeholder="Bengali 2nd paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 1<sup>st</sup> paper</h5></td>
+                    <td><input id="jsc-english1" type="number" placeholder="English 1st paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="jsc-english2" type="number" placeholder="English 2nd paper Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Math</h5></td>
@@ -122,73 +133,159 @@
     <section id="ssc-input" class="container ssc-input">
         <div class="form-box">
             <h3>SSC Grade Calculation</h3>
+            <h5 id="ssc-alert"></h5>
             <table class="table table-hover">
                 <tr scope="row">
-                    <td><h5>Bengali</h5></td>
-                    <td><input type="number" placeholder="Bengali Number"></td>
+                    <td><h5>Bengali 1<sup>st</sup> paper</h5></td>
+                    <td><input id="ssc-bengali1" type="number" placeholder="Bengali 1st paper Number"></td>
                 </tr>
                 <tr scope="row">
-                    <td><h5>English</h5></td>
-                    <td><input type="number" placeholder="English Number"></td>
+                    <td><h5>Bengali 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="ssc-bengali2" type="number" placeholder="Bengali 2nd paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 1<sup>st</sup> paper</h5></td>
+                    <td><input id="ssc-english1" type="number" placeholder="English 1st paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="ssc-english2" type="number" placeholder="English 2nd paper Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Math</h5></td>
-                    <td><input type="number" placeholder="Math Number"></td>
+                    <td><input id="ssc-math" type="number" placeholder="Math Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>B.G.S</h5></td>
-                    <td><input type="number" placeholder="B.G.S Number"></td>
+                    <td><input id="ssc-bgs" type="number" placeholder="B.G.S Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Science</h5></td>
-                    <td><input type="number" placeholder="Science Number"></td>
+                    <td><input id="ssc-science" type="number" placeholder="Science Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Religion</h5></td>
-                    <td><input type="number" placeholder="Religion Number"></td>
+                    <td><input id="jsc-religion" type="number" placeholder="Religion Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>ICT</h5></td>
+                    <td><input id="jsc-ict" type="number" placeholder="ICT Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Physical Education</h5></td>
+                    <td><input id="jsc-physical" type="number" placeholder="Physical Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Arts and Craft</h5></td>
+                    <td><input id="jsc-arts-craft" type="number" placeholder="Arts and Craft Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Work and life Education</h5></td>
+                    <td><input id="jsc-work-life" type="number" placeholder="Work and life Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Agricultural Studies / Home Science</h5></td>
+                    <td><input id="jsc-agricultural-home" type="number" placeholder="Agricultural Studies / Home Science Number"></td>
                 </tr>
             </table>
-            <button class="custom-button">Calculate Your Grade</button>
+            <button id="jsc-calculate" class="custom-button">Calculate Your Grade</button>
         </div>
-        <div id="psc-result" class="result-sheet">
-            <h1>Your GPA: <span id="psc-point"></span></h1>
-            <h1>Your Grade: <span id="psc-grade"></span></h1>
+        <div id="jsc-result" class="result-sheet">
+            <h1>Your GPA: <span id="jsc-point"></span></h1>
+            <h1>Your Grade: <span id="jsc-grade"></span></h1>
         </div>
     </section>
     <section id="hsc-input" class="container hsc-input">
         <div class="form-box">
             <h3>HSC Grade Calculation</h3>
+            <h5 id="hsc-alert"></h5>
             <table class="table table-hover">
                 <tr scope="row">
-                    <td><h5>Bengali</h5></td>
-                    <td><input type="number" placeholder="Bengali Number"></td>
+                    <td><h5>Bengali 1<sup>st</sup> paper</h5></td>
+                    <td><input id="jsc-bengali1" type="number" placeholder="Bengali 1st paper Number"></td>
                 </tr>
                 <tr scope="row">
-                    <td><h5>English</h5></td>
-                    <td><input type="number" placeholder="English Number"></td>
+                    <td><h5>Bengali 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="jsc-bengali2" type="number" placeholder="Bengali 2nd paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 1<sup>st</sup> paper</h5></td>
+                    <td><input id="jsc-english1" type="number" placeholder="English 1st paper Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>English 2<sup>nd</sup> paper</h5></td>
+                    <td><input id="jsc-english2" type="number" placeholder="English 2nd paper Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Math</h5></td>
-                    <td><input type="number" placeholder="Math Number"></td>
+                    <td><input id="jsc-math" type="number" placeholder="Math Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>B.G.S</h5></td>
-                    <td><input type="number" placeholder="B.G.S Number"></td>
+                    <td><input id="jsc-bgs" type="number" placeholder="B.G.S Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Science</h5></td>
-                    <td><input type="number" placeholder="Science Number"></td>
+                    <td><input id="jsc-science" type="number" placeholder="Science Number"></td>
                 </tr>
                 <tr scope="row">
                     <td><h5>Religion</h5></td>
-                    <td><input type="number" placeholder="Religion Number"></td>
+                    <td><input id="jsc-religion" type="number" placeholder="Religion Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>ICT</h5></td>
+                    <td><input id="jsc-ict" type="number" placeholder="ICT Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Physical Education</h5></td>
+                    <td><input id="jsc-physical" type="number" placeholder="Physical Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Arts and Craft</h5></td>
+                    <td><input id="jsc-arts-craft" type="number" placeholder="Arts and Craft Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Work and life Education</h5></td>
+                    <td><input id="jsc-work-life" type="number" placeholder="Work and life Education Number"></td>
+                </tr>
+                <tr scope="row">
+                    <td><h5>Agricultural Studies / Home Science</h5></td>
+                    <td><input id="jsc-agricultural-home" type="number" placeholder="Agricultural Studies / Home Science Number"></td>
                 </tr>
             </table>
-            <button class="custom-button">Calculate Your Grade</button>
+            <button id="jsc-calculate" class="custom-button">Calculate Your Grade</button>
         </div>
-        <div id="psc-result" class="result-sheet">
-            <h1>Your GPA: <span id="psc-point"></span></h1>
-            <h1>Your Grade: <span id="psc-grade"></span></h1>
+        <div id="jsc-result" class="result-sheet">
+            <h1>Your GPA: <span id="jsc-point"></span></h1>
+            <h1>Your Grade: <span id="jsc-grade"></span></h1>
+        </div>
+    </section>
+    <section id="varsity-input" class="container varsity-input">
+        <div class="form-box">
+            <h3>Credit System Grade Calculation</h3>
+            <h4>How many course did you attend?</h4>
+            <input id="course-number-input" type="number">
+            <button id="course-number-submit" class="custom-button">Submit</button>
+            <h5 id="varsity-alert"></h5>
+            <table id="varsity-table" class="table table-hover">
+                <!-- <tr scope="row">
+                    <td><h5>Course Name:</h5></td>
+                    <td><input type="text" id="" placeholder="Course Name"></td>
+                    <td><h5>Credit</h5></td>
+                    <td><input type="number" id="" placeholder="Credit"></td>
+                    <td><h5>Number (%)</h5></td>
+                    <td><input type="number" id="" placeholder="Number"></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr> -->
+            </table>
+            <div id="calculate-add-buttons">
+                <button id="varsity-calculate" class="custom-button">Calculate Your Grade</button>
+                <button onclick="addCourse()" id="add-course" class="custom-button">Add Course</button>
+            </div>
+        </div>
+        <div id="varsity-result" class="result-sheet">
+            <h1>Your GPA: <span id="varsity-point"></span></h1>
+            <h1>Your Grade: <span id="varsity-grade"></span></h1>
         </div>
     </section>
 

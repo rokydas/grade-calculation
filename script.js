@@ -3,10 +3,12 @@ document.getElementById('psc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = '#0a5757';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('jsc').addEventListener('click', function(){
@@ -14,10 +16,12 @@ document.getElementById('jsc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'block';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = '#0a5757';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('ssc').addEventListener('click', function(){
@@ -25,10 +29,12 @@ document.getElementById('ssc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'block';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = '#0a5757';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('hsc').addEventListener('click', function(){
@@ -36,10 +42,25 @@ document.getElementById('hsc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'block';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = '#0a5757';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
+})
+
+document.getElementById('varsity').addEventListener('click', function(){
+    document.getElementById('psc-input').style.display = 'none';
+    document.getElementById('jsc-input').style.display = 'none';
+    document.getElementById('ssc-input').style.display = 'none';
+    document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'block';
+    document.getElementById('psc').style.backgroundColor = 'teal';
+    document.getElementById('jsc').style.backgroundColor = 'teal';
+    document.getElementById('ssc').style.backgroundColor = 'teal';
+    document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = '#0a5757';
 })
 
 function numberToPoint(num){
@@ -94,9 +115,6 @@ function pointToGrade(point){
     else if(point > 0){
         return 'E';
     }
-    else if(num >= 0){
-        return 0;
-    }
 }
 
 document.getElementById('psc-calculate').addEventListener('click', function(){
@@ -106,8 +124,6 @@ document.getElementById('psc-calculate').addEventListener('click', function(){
     const pscBgs = numberToPoint(document.getElementById('psc-bgs').value);
     const pscScience = numberToPoint(document.getElementById('psc-science').value);
     const pscReligion = numberToPoint(document.getElementById('psc-religion').value);
-
-    // console.log(pscBengali);
 
     // Fail
     if(pscBengali == 0 || pscEnglish == 0 || pscMath == 0 || pscBgs == 0 || pscScience == 0 || pscReligion == 0){
@@ -141,10 +157,32 @@ document.getElementById('psc-calculate').addEventListener('click', function(){
     }
 })
 
+function paperResult(paper1Id, paper2Id){
+    let point = 100;
+    const paper1 = document.getElementById(paper1Id).value;
+    const paper2 = document.getElementById(paper2Id).value;
+    if(paper1.length == 0 || paper2.length == 0){
+        point = -2;
+    }
+    else if(paper1 < 0 || paper2 < 0 || paper1 > 100 || paper2 > 100){
+        point = -1;
+    }
+    else if(paper1 < 33 || paper2 < 33){
+        point = 0;
+    }
+    else{
+        const paperAvg = (parseInt(paper1) + parseInt(paper2))/2;
+        point = numberToPoint(paperAvg);
+    }
+    return point;
+}
+
 document.getElementById('jsc-calculate').addEventListener('click', function(){
-    const jscBengali = numberToPoint(document.getElementById('jsc-bengali').value);
-    const jscEnglish = numberToPoint(document.getElementById('jsc-english').value);
+    jscBengali = paperResult('jsc-bengali1', 'jsc-bengali2');
+ 
+    const jscEnglish = numberToPoint(document.getElementById('jsc-english1').value);
     const jscMath = numberToPoint(document.getElementById('jsc-math').value);
+    
     const jscBgs = numberToPoint(document.getElementById('jsc-bgs').value);
     const jscScience = numberToPoint(document.getElementById('jsc-science').value);
     const jscReligion = numberToPoint(document.getElementById('jsc-religion').value);
@@ -153,8 +191,6 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
     const jscArtsCrafts = numberToPoint(document.getElementById('jsc-arts-craft').value);
     const jscWorkLife = numberToPoint(document.getElementById('jsc-work-life').value);
     const jscAgriculturalHome = numberToPoint(document.getElementById('jsc-agricultural-home').value);
-
-    // console.log(pscBengali);
 
     // Fail
     if(jscBengali == 0 || jscEnglish == 0 || jscMath == 0 || jscBgs == 0 || jscScience == 0 || jscReligion == 0 || jscIct == 0 || jscPhysical == 0 || jscArtsCrafts == 0 || jscWorkLife == 0 || jscAgriculturalHome == 0){
@@ -179,15 +215,46 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
     }
 
     else{
-        const result = ((jscBengali + jscEnglish + jscMath + jscBgs + jscScience + jscReligion + jscIct + jscPhysical + jscArtsCrafts + jscWorkLife + jscAgriculturalHome)/11).toFixed(2);
+        const result = ((jscBengali + jscEnglish + jscMath + jscBgs + jscScience + jscReligion + jscIct + jscPhysical + jscArtsCrafts + jscWorkLife + jscAgriculturalHome - 2)/10).toFixed(2);
         document.getElementById('jsc-point').innerHTML = result;
         const grade = pointToGrade(result);
         document.getElementById('jsc-grade').innerHTML = grade + " (Pass)";
         document.getElementById('jsc-result').style.display = 'block';
         document.getElementById('jsc-alert').style.display = 'none';
     }
-    
-
-
-
 })
+
+// VARSITY
+document.getElementById('course-number-submit').addEventListener('click', function(){
+    courseNumber = document.getElementById('course-number-input').value;
+    document.getElementById('varsity-table').innerHTML = '';
+    for (let i = 1; i <= courseNumber; i++) {
+        document.getElementById('varsity-table').innerHTML += `<tr id="course${i}" scope="row">
+                                                                <td><h5>Course Name:</h5></td>
+                                                                <td><input type="text" id="" placeholder="Course Name"></td>
+                                                                <td><h5>Credit</h5></td>
+                                                                <td><input type="number" id="credit${i}" placeholder="Credit"></td>
+                                                                <td><h5>Number (%)</h5></td>
+                                                                <td><input type="number" id="number${i}" placeholder="Number"></td>
+                                                                <td><button onClick="courseDelete(course${i})" class="btn btn-danger">Delete</button></td>
+                                                            </tr>`
+    }
+    document.getElementById('calculate-add-buttons').style.display = 'block';
+})
+
+function courseDelete(id){
+    id.style.display = 'none';
+}
+
+function addCourse(){
+    courseNumber++;
+    document.getElementById('varsity-table').innerHTML += `<tr scope="row">
+                                                                <td><h5>Course Name:</h5></td>
+                                                                <td><input type="text" id="" placeholder="Course Name"></td>
+                                                                <td><h5>Credit</h5></td>
+                                                                <td><input type="number" id="credit${courseNumber}" placeholder="Credit"></td>
+                                                                <td><h5>Number (%)</h5></td>
+                                                                <td><input type="number" id="" placeholder="Number"></td>
+                                                                <td><button onClick="courseDelete(credit${courseNumber})" class="btn btn-danger">Delete</button></td>
+                                                            </tr>`
+}
