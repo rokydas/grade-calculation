@@ -94,9 +94,6 @@ function pointToGrade(point){
     else if(point > 0){
         return 'E';
     }
-    else if(num >= 0){
-        return 0;
-    }
 }
 
 document.getElementById('psc-calculate').addEventListener('click', function(){
@@ -106,8 +103,6 @@ document.getElementById('psc-calculate').addEventListener('click', function(){
     const pscBgs = numberToPoint(document.getElementById('psc-bgs').value);
     const pscScience = numberToPoint(document.getElementById('psc-science').value);
     const pscReligion = numberToPoint(document.getElementById('psc-religion').value);
-
-    // console.log(pscBengali);
 
     // Fail
     if(pscBengali == 0 || pscEnglish == 0 || pscMath == 0 || pscBgs == 0 || pscScience == 0 || pscReligion == 0){
@@ -141,10 +136,33 @@ document.getElementById('psc-calculate').addEventListener('click', function(){
     }
 })
 
+function paperResult(paper1Id, paper2Id){
+    let point = 100;
+    const paper1 = document.getElementById(paper1Id).value;
+    const paper2 = document.getElementById(paper2Id).value;
+    if(paper1.length == 0 || paper2.length == 0){
+        point = -2;
+    }
+    else if(paper1 < 0 || paper2 < 0 || paper1 > 100 || paper2 > 100){
+        point = -1;
+    }
+    else if(paper1 < 33 || paper2 < 33){
+        point = 0;
+    }
+    else{
+        const paperAvg = (parseInt(paper1) + parseInt(paper2))/2;
+        point = numberToPoint(paperAvg);
+    }
+    return point;
+}
+
 document.getElementById('jsc-calculate').addEventListener('click', function(){
-    const jscBengali = numberToPoint(document.getElementById('jsc-bengali').value);
-    const jscEnglish = numberToPoint(document.getElementById('jsc-english').value);
+    jscBengali = paperResult('jsc-bengali1', 'jsc-bengali2');
+ 
+    // const jscBengali = numberToPoint(document.getElementById('jsc-bengali1').value);
+    const jscEnglish = numberToPoint(document.getElementById('jsc-english1').value);
     const jscMath = numberToPoint(document.getElementById('jsc-math').value);
+    
     const jscBgs = numberToPoint(document.getElementById('jsc-bgs').value);
     const jscScience = numberToPoint(document.getElementById('jsc-science').value);
     const jscReligion = numberToPoint(document.getElementById('jsc-religion').value);
@@ -153,8 +171,6 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
     const jscArtsCrafts = numberToPoint(document.getElementById('jsc-arts-craft').value);
     const jscWorkLife = numberToPoint(document.getElementById('jsc-work-life').value);
     const jscAgriculturalHome = numberToPoint(document.getElementById('jsc-agricultural-home').value);
-
-    // console.log(pscBengali);
 
     // Fail
     if(jscBengali == 0 || jscEnglish == 0 || jscMath == 0 || jscBgs == 0 || jscScience == 0 || jscReligion == 0 || jscIct == 0 || jscPhysical == 0 || jscArtsCrafts == 0 || jscWorkLife == 0 || jscAgriculturalHome == 0){
@@ -179,15 +195,11 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
     }
 
     else{
-        const result = ((jscBengali + jscEnglish + jscMath + jscBgs + jscScience + jscReligion + jscIct + jscPhysical + jscArtsCrafts + jscWorkLife + jscAgriculturalHome)/11).toFixed(2);
+        const result = ((jscBengali + jscEnglish + jscMath + jscBgs + jscScience + jscReligion + jscIct + jscPhysical + jscArtsCrafts + jscWorkLife + jscAgriculturalHome - 2)/10).toFixed(2);
         document.getElementById('jsc-point').innerHTML = result;
         const grade = pointToGrade(result);
         document.getElementById('jsc-grade').innerHTML = grade + " (Pass)";
         document.getElementById('jsc-result').style.display = 'block';
         document.getElementById('jsc-alert').style.display = 'none';
     }
-    
-
-
-
 })
