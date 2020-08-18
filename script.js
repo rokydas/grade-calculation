@@ -3,10 +3,12 @@ document.getElementById('psc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = '#0a5757';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('jsc').addEventListener('click', function(){
@@ -14,10 +16,12 @@ document.getElementById('jsc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'block';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = '#0a5757';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('ssc').addEventListener('click', function(){
@@ -25,10 +29,12 @@ document.getElementById('ssc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'block';
     document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = '#0a5757';
     document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('hsc').addEventListener('click', function(){
@@ -36,10 +42,25 @@ document.getElementById('hsc').addEventListener('click', function(){
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'block';
+    document.getElementById('varsity-input').style.display = 'none';
     document.getElementById('psc').style.backgroundColor = 'teal';
     document.getElementById('jsc').style.backgroundColor = 'teal';
     document.getElementById('ssc').style.backgroundColor = 'teal';
     document.getElementById('hsc').style.backgroundColor = '#0a5757';
+    document.getElementById('varsity').style.backgroundColor = 'teal';
+})
+
+document.getElementById('varsity').addEventListener('click', function(){
+    document.getElementById('psc-input').style.display = 'none';
+    document.getElementById('jsc-input').style.display = 'none';
+    document.getElementById('ssc-input').style.display = 'none';
+    document.getElementById('hsc-input').style.display = 'none';
+    document.getElementById('varsity-input').style.display = 'block';
+    document.getElementById('psc').style.backgroundColor = 'teal';
+    document.getElementById('jsc').style.backgroundColor = 'teal';
+    document.getElementById('ssc').style.backgroundColor = 'teal';
+    document.getElementById('hsc').style.backgroundColor = 'teal';
+    document.getElementById('varsity').style.backgroundColor = '#0a5757';
 })
 
 function numberToPoint(num){
@@ -159,7 +180,6 @@ function paperResult(paper1Id, paper2Id){
 document.getElementById('jsc-calculate').addEventListener('click', function(){
     jscBengali = paperResult('jsc-bengali1', 'jsc-bengali2');
  
-    // const jscBengali = numberToPoint(document.getElementById('jsc-bengali1').value);
     const jscEnglish = numberToPoint(document.getElementById('jsc-english1').value);
     const jscMath = numberToPoint(document.getElementById('jsc-math').value);
     
@@ -203,3 +223,38 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
         document.getElementById('jsc-alert').style.display = 'none';
     }
 })
+
+// VARSITY
+document.getElementById('course-number-submit').addEventListener('click', function(){
+    courseNumber = document.getElementById('course-number-input').value;
+    document.getElementById('varsity-table').innerHTML = '';
+    for (let i = 1; i <= courseNumber; i++) {
+        document.getElementById('varsity-table').innerHTML += `<tr id="course${i}" scope="row">
+                                                                <td><h5>Course Name:</h5></td>
+                                                                <td><input type="text" id="" placeholder="Course Name"></td>
+                                                                <td><h5>Credit</h5></td>
+                                                                <td><input type="number" id="credit${i}" placeholder="Credit"></td>
+                                                                <td><h5>Number (%)</h5></td>
+                                                                <td><input type="number" id="number${i}" placeholder="Number"></td>
+                                                                <td><button onClick="courseDelete(course${i})" class="btn btn-danger">Delete</button></td>
+                                                            </tr>`
+    }
+    document.getElementById('calculate-add-buttons').style.display = 'block';
+})
+
+function courseDelete(id){
+    id.style.display = 'none';
+}
+
+function addCourse(){
+    courseNumber++;
+    document.getElementById('varsity-table').innerHTML += `<tr scope="row">
+                                                                <td><h5>Course Name:</h5></td>
+                                                                <td><input type="text" id="" placeholder="Course Name"></td>
+                                                                <td><h5>Credit</h5></td>
+                                                                <td><input type="number" id="credit${courseNumber}" placeholder="Credit"></td>
+                                                                <td><h5>Number (%)</h5></td>
+                                                                <td><input type="number" id="" placeholder="Number"></td>
+                                                                <td><button onClick="courseDelete(credit${courseNumber})" class="btn btn-danger">Delete</button></td>
+                                                            </tr>`
+}
