@@ -42,9 +42,13 @@ input:focus{
     margin-bottom: 30px;
 }
 
-#psc-alert, #jsc-alert, #ssc-alert, #hsc-alert, #varsity-alert{
+#psc-alert, #jsc-alert, #ssc-alert, #hsc-alert{
     color: red;
     display: none;
+}
+
+#varsity-alert{
+    color: red;
 }
 
 .result-sheet{
@@ -58,8 +62,21 @@ input:focus{
     display: none;
 }
 
-#psc{
-    background-color: #0a5757;
+.exam-icon-btn{
+    border: none;
+    background-color: teal;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 10px;
+    padding: 10px;
+    outline: none;
+}
+
+.active{
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 #psc-result, #jsc-result, #ssc-result, #hsc-result, #varsity-result{
