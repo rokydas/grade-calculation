@@ -1,14 +1,20 @@
+const header = document.getElementById("exam-icons");
+const btns = header.getElementsByClassName("exam-icon-btn");
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  const current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+
+
 document.getElementById('psc').addEventListener('click', function(){
     document.getElementById('psc-input').style.display = 'block';
     document.getElementById('jsc-input').style.display = 'none';
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
     document.getElementById('varsity-input').style.display = 'none';
-    document.getElementById('psc').style.backgroundColor = '#0a5757';
-    document.getElementById('jsc').style.backgroundColor = 'teal';
-    document.getElementById('ssc').style.backgroundColor = 'teal';
-    document.getElementById('hsc').style.backgroundColor = 'teal';
-    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('jsc').addEventListener('click', function(){
@@ -17,11 +23,6 @@ document.getElementById('jsc').addEventListener('click', function(){
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
     document.getElementById('varsity-input').style.display = 'none';
-    document.getElementById('psc').style.backgroundColor = 'teal';
-    document.getElementById('jsc').style.backgroundColor = '#0a5757';
-    document.getElementById('ssc').style.backgroundColor = 'teal';
-    document.getElementById('hsc').style.backgroundColor = 'teal';
-    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('ssc').addEventListener('click', function(){
@@ -30,11 +31,6 @@ document.getElementById('ssc').addEventListener('click', function(){
     document.getElementById('ssc-input').style.display = 'block';
     document.getElementById('hsc-input').style.display = 'none';
     document.getElementById('varsity-input').style.display = 'none';
-    document.getElementById('psc').style.backgroundColor = 'teal';
-    document.getElementById('jsc').style.backgroundColor = 'teal';
-    document.getElementById('ssc').style.backgroundColor = '#0a5757';
-    document.getElementById('hsc').style.backgroundColor = 'teal';
-    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('hsc').addEventListener('click', function(){
@@ -43,11 +39,6 @@ document.getElementById('hsc').addEventListener('click', function(){
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'block';
     document.getElementById('varsity-input').style.display = 'none';
-    document.getElementById('psc').style.backgroundColor = 'teal';
-    document.getElementById('jsc').style.backgroundColor = 'teal';
-    document.getElementById('ssc').style.backgroundColor = 'teal';
-    document.getElementById('hsc').style.backgroundColor = '#0a5757';
-    document.getElementById('varsity').style.backgroundColor = 'teal';
 })
 
 document.getElementById('varsity').addEventListener('click', function(){
@@ -56,11 +47,6 @@ document.getElementById('varsity').addEventListener('click', function(){
     document.getElementById('ssc-input').style.display = 'none';
     document.getElementById('hsc-input').style.display = 'none';
     document.getElementById('varsity-input').style.display = 'block';
-    document.getElementById('psc').style.backgroundColor = 'teal';
-    document.getElementById('jsc').style.backgroundColor = 'teal';
-    document.getElementById('ssc').style.backgroundColor = 'teal';
-    document.getElementById('hsc').style.backgroundColor = 'teal';
-    document.getElementById('varsity').style.backgroundColor = '#0a5757';
 })
 
 function numberToPoint(num){
@@ -226,35 +212,153 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
 
 // VARSITY
 document.getElementById('course-number-submit').addEventListener('click', function(){
+    document.getElementById('varsity-result').style.display = 'none';
     courseNumber = document.getElementById('course-number-input').value;
-    document.getElementById('varsity-table').innerHTML = '';
-    for (let i = 1; i <= courseNumber; i++) {
-        document.getElementById('varsity-table').innerHTML += `<tr id="course${i}" scope="row">
-                                                                <td><h5>Course Name:</h5></td>
-                                                                <td><input type="text" id="" placeholder="Course Name"></td>
-                                                                <td><h5>Credit</h5></td>
-                                                                <td><input type="number" id="credit${i}" placeholder="Credit"></td>
-                                                                <td><h5>Number (%)</h5></td>
-                                                                <td><input type="number" id="number${i}" placeholder="Number"></td>
-                                                                <td><button onClick="courseDelete(course${i})" class="btn btn-danger">Delete</button></td>
-                                                            </tr>`
+    if(courseNumber != 0){
+        activeCourse = [];
+        document.getElementById('varsity-table').innerHTML = '';
+        for (let i = 1; i <= courseNumber; i++) {
+            activeCourse.push(i);
+            document.getElementById('varsity-table').innerHTML += `<tr id="course${i}" scope="row">
+                                                                    <td><h5>Course Name:</h5></td>
+                                                                    <td><input type="text" id="" placeholder="Course Name"></td>
+                                                                    <td><h5>Credit</h5></td>
+                                                                    <td><input type="number" id="credit${i}" placeholder="Credit"></td>
+                                                                    <td><h5>Number (%)</h5></td>
+                                                                    <td><input type="number" id="number${i}" placeholder="Number"></td>
+                                                                    <td><button onClick="courseDelete('course${i}', ${i})" class="btn btn-danger">Delete</button></td>
+                                                                </tr>`
+        }
+        document.getElementById('calculate-add-buttons').style.display = 'block';
+        console.log(activeCourse);
     }
-    document.getElementById('calculate-add-buttons').style.display = 'block';
 })
 
-function courseDelete(id){
-    id.style.display = 'none';
+function courseDelete(id, idNumber){
+    document.getElementById(id).style.display = 'none';
+    const index = activeCourse.indexOf(idNumber);
+    activeCourse.splice(index, 1);
+    console.log(activeCourse);
 }
 
 function addCourse(){
     courseNumber++;
-    document.getElementById('varsity-table').innerHTML += `<tr scope="row">
+    document.getElementById('varsity-table').innerHTML += `<tr id="course${courseNumber}" scope="row">
                                                                 <td><h5>Course Name:</h5></td>
                                                                 <td><input type="text" id="" placeholder="Course Name"></td>
                                                                 <td><h5>Credit</h5></td>
                                                                 <td><input type="number" id="credit${courseNumber}" placeholder="Credit"></td>
                                                                 <td><h5>Number (%)</h5></td>
-                                                                <td><input type="number" id="" placeholder="Number"></td>
-                                                                <td><button onClick="courseDelete(credit${courseNumber})" class="btn btn-danger">Delete</button></td>
+                                                                <td><input type="number" id="number${courseNumber}" placeholder="Number"></td>
+                                                                <td><button onClick="courseDelete('course${courseNumber}', ${courseNumber})" class="btn btn-danger">Delete</button></td>
                                                             </tr>`
+    activeCourse.push(courseNumber);
+    // console.log(activeCourse);
+    document.getElementById('varsity-result').style.display = 'none';
 }
+
+function numberToPointVarsity(num){
+    if(num.length == 0){
+        return -2;
+    }
+    else if(num < 0 || num > 100){
+        return -1;
+    }
+    else if(num >= 80){
+        return 4;
+    }
+    else if(num >= 75){
+        return 3.75;
+    }
+    else if(num >= 70){
+        return 3.50;
+    }
+    else if(num >= 65){
+        return 3.25;
+    }
+    else if(num >= 60){
+        return 3;
+    }
+    else if(num >= 55){
+        return 2.75;
+    }
+    else if(num >= 50){
+        return 2.50;
+    }
+    else if(num >= 45){
+        return 2.25;
+    }
+    else if(num >= 40){
+        return 2;
+    }
+    else{
+        return 0;
+    }
+}
+
+function pointToGradeVarsity(point){
+    if(point == 4){
+        return 'A+';
+    }
+    else if(point >= 3.75){
+        return 'A';
+    }
+    else if(point >= 3.50){
+        return 'A-';
+    }
+    else if(point >= 3.25){
+        return 'B+';
+    }
+    else if(point >= 3){
+        return 'B';
+    }
+    else if(point >= 2.75){
+        return 'B-';
+    }
+    else if(point >= 2.50){
+        return 'C+';
+    }
+    else if(point >= 2.25){
+        return 'C';
+    }
+    else if(point >= 2){
+        return 'C-';
+    }
+    else{
+        return 'F';
+    }
+}
+
+document.getElementById('varsity-calculate').addEventListener('click', function(){
+    let totalCredit = 0;
+    let creditIntoPoint = 0;
+    let temp = 0;
+    for (let i = 0; i < activeCourse.length; i++) {
+        const courseNo = activeCourse[i];
+        const credit = document.getElementById(`credit${courseNo}`).value;
+        const number = document.getElementById(`number${courseNo}`).value;
+        const point = numberToPointVarsity(number);
+        // console.log(point);
+        if(point == -2){
+            document.getElementById('varsity-alert').innerText = 'Fill up all fields';
+            break;
+        }
+        else if(point == -1){
+            document.getElementById('varsity-alert').innerText = 'Please input valid number';
+            break;
+        }
+        totalCredit += parseInt(credit);
+        creditIntoPoint += parseFloat(credit * point);
+        temp = 5;
+        // console.log(totalCredit, creditIntoPoint);
+    }
+    if(temp == 5){
+        const avgPoint = (creditIntoPoint / totalCredit).toFixed(2);
+        const grade = pointToGradeVarsity(avgPoint);
+
+        document.getElementById('varsity-point').innerText = avgPoint;
+        document.getElementById('varsity-grade').innerText = grade;
+        document.getElementById('varsity-result').style.display = 'block';
+    }
+    
+})
