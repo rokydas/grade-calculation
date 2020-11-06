@@ -163,12 +163,12 @@ function paperResult(paper1Id, paper2Id){
     return point;
 }
 
+// JSC
 document.getElementById('jsc-calculate').addEventListener('click', function(){
-    jscBengali = paperResult('jsc-bengali1', 'jsc-bengali2');
+    const jscBengali = paperResult('jsc-bengali1', 'jsc-bengali2');
  
     const jscEnglish = numberToPoint(document.getElementById('jsc-english1').value);
     const jscMath = numberToPoint(document.getElementById('jsc-math').value);
-    
     const jscBgs = numberToPoint(document.getElementById('jsc-bgs').value);
     const jscScience = numberToPoint(document.getElementById('jsc-science').value);
     const jscReligion = numberToPoint(document.getElementById('jsc-religion').value);
@@ -208,6 +208,11 @@ document.getElementById('jsc-calculate').addEventListener('click', function(){
         document.getElementById('jsc-result').style.display = 'block';
         document.getElementById('jsc-alert').style.display = 'none';
     }
+})
+
+//SSC
+document.getElementById('ssc-calculate').addEventListener('click', function(){
+
 })
 
 // VARSITY
